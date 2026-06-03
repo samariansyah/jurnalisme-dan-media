@@ -9,7 +9,7 @@ export default function SentimenPieChart({ stats, total }: { stats: Record<strin
     <ResponsiveContainer width="100%" height={280}>
       <PieChart>
         <Pie data={data} cx="50%" cy="50%" innerRadius={70} outerRadius={110} paddingAngle={3} dataKey="value"
-          label={({ name, pct }) => `${name} ${pct}%`} labelLine={false}>
+          label={({ name, percent }) => `${name} ${((percent ?? 0) * 100).toFixed(1)}%`} labelLine={false}>
           {data.map((entry) => <Cell key={entry.name} fill={COLORS[entry.name as keyof typeof COLORS]} />)}
         </Pie>
         <Tooltip formatter={(v: number) => [`${v} tweet`, "Jumlah"]} />
