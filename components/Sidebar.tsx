@@ -14,6 +14,7 @@ import {
   Cloud,
   TrendingUp,
   TableProperties,
+  UploadCloud,
 } from "lucide-react";
 
 const navItems = [
@@ -62,7 +63,23 @@ export default function Sidebar() {
           );
         })}
 
-        <div className="pt-3">
+        <div className="pt-3 pb-1">
+          <p className="px-3 pb-2 text-[10px] font-semibold text-slate-500 uppercase tracking-widest">Upload & Analisis</p>
+          {[{ href:"/upload", icon: UploadCloud, label:"Upload CSV" }].map(({ href, icon: Icon, label }) => {
+            const active = pathname === href;
+            return (
+              <Link key={href} href={href}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  active ? "bg-amber-500 text-white" : "text-slate-400 hover:text-white hover:bg-slate-800"
+                }`}>
+                <Icon size={18} />
+                {label}
+              </Link>
+            );
+          })}
+        </div>
+
+        <div className="pt-1">
           <div className="flex items-center gap-2 px-3 py-2">
             <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest">☪️ Riset Sentimen</span>
           </div>
